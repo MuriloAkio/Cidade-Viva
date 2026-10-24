@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  
+  <!-- Define a codificação de caracteres como UTF-8 (suporta acentos e caracteres especiais) -->
+  <!-- Configura a viewport para que a página se adapte ao tamanho da tela do dispositivo (responsivo) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Cidade Viva - Login</title>
+
+</head>
+
+    <body>
+
+      <h2>Cidade Viva - Acesso ao Sistema</h2>
+
+      <!-- Abre um formulário com o identificador "loginForm" (usado pelo JavaScript para manipulá-lo) -->
+        <form id="loginForm">
+            
+          <div>
+
+              <!-- Exibe um rótulo "Login:" que está associado ao campo com id "login" -->
+              <label for="login">Login:</label>
+
+              <!-- Cria um campo de texto para o usuário digitar o login, com placeholder de exemplo e obrigatório (required) -->
+              <input type="text" id="login" name="login" placeholder="Ex: ana.silva" required>
+              
+          </div>
+
+          <br>
+
+          <div>
+
+              <!-- Exibe um rótulo "Senha:" associado ao campo com id "senha" -->
+              <label for="senha">Senha:</label>
+
+              <!-- Cria um campo de senha (caracteres ocultos), com placeholder e obrigatório -->
+              <input type="password" id="senha" name="senha" placeholder="Sua senha" required>
+              
+          </div>
+
+          <br>
+          
+                <!-- Cria um botão do tipo "submit" que envia o formulário e mostra o texto "Entrar" -->
+                <button type="submit">Entrar</button>
+
+        </form>
+
+      <p id="mensagemErro" style="color: red;"></p>
+      <!-- Cria um parágrafo vazio com id "mensagemErro" e cor vermelha (usado para exibir mensagens de erro) -->
+
+      <script src="login.js"></script>
+      <!-- Importa o arquivo JavaScript externo "login.js" (responsável pela lógica de login no frontend) -->
+
+    </body>
+
+</html>
+

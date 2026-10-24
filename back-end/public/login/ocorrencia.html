@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cidade Viva - Inserir Ocorrência</title>
+</head>
+<body>
+
+  <h2>Cadastrar Nova Ocorrência</h2>
+
+  <form id="ocorrenciaForm">
+    <div>
+      <label for="titulo">Título:</label><br>
+      <input type="text" id="titulo" required placeholder="Ex: Buraco na rua">
+    </div>
+    <br>
+    <div>
+      <label for="endereco">Endereço:</label><br>
+      <input type="text" id="endereco" required placeholder="Ex: Rua A, 100">
+    </div>
+    <br>
+    <div>
+      <label for="descricao">Descrição:</label><br>
+      <textarea id="descricao" rows="4" cols="50" required placeholder="Descreva o problema..."></textarea>
+    </div>
+    <br>
+    <button type="submit">Cadastrar Ocorrência</button>
+  </form>
+
+  <script>
+    const idUsuario = localStorage.getItem('id_usuario');
+    if (!idUsuario) {
+      alert('Você precisa fazer login primeiro!');
+      window.location.href = '/index.html';
+    }
+  </script>
+
+</body>
+</html>
