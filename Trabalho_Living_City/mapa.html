@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Living City · Mapa</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+    <a class="brand" href="mapa.html"><img src="assets/logo.png" alt="Living City"></a>
+
+    <nav class="nav" id="nav" aria-label="Principal">
+        <span class="nav-glow"></span>
+        <a href="#mapa" class="active" data-tip="Mapa" aria-label="Mapa"><i class="bx bx-map off"></i><i class="bx bxs-map on"></i></a>
+        <a href="#" data-act="novo" data-tip="Nova ocorrência" aria-label="Nova ocorrência"><i class="bx bx-paper-plane off"></i><i class="bx bxs-paper-plane on"></i></a>
+        <a href="#relatos" data-act="meus" data-tip="Suas ocorrências" aria-label="Suas ocorrências"><i class="bx bx-note off"></i><i class="bx bxs-note on"></i></a>
+        <a href="ocorrencias.html" data-tip="Ocorrências urbanas" aria-label="Ocorrências urbanas"><i class="bx bx-buildings off"></i><i class="bx bxs-buildings on"></i></a>
+        <a href="#sobre" data-tip="Quem somos" aria-label="Quem somos"><i class="bx bx-group off"></i><i class="bx bxs-group on"></i></a>
+    </nav>
+
+    <a class="btn btn-white" id="btnLogin" href="index.html"><i class="bx bx-log-in"></i> Log In</a>
+</header>
+
+<main>
+    <section class="hero" id="mapa">
+        <div class="map-card"><div id="map"></div></div>
+
+        <div class="panel">
+            <span class="eyebrow"><i class="bx bx-map-pin"></i> Mapa colaborativo · São Paulo</span>
+            <h1>Explore os relatos</h1>
+            <p>Observe os ponteiros no mapa para identificar os locais onde foram registrados relatos de poluição. Cada marcador representa um ponto de atenção ambiental.</p>
+            <p>Explore os registros e conheça os problemas ambientais relatados em diferentes regiões.</p>
+
+            <div class="chips" id="chips" role="group" aria-label="Filtrar por tipo"></div>
+
+            <button class="btn btn-white" id="r_ocorrencia" type="button"><i class="bx bx-paper-plane"></i> Registre sua ocorrência!</button>
+            <a class="btn btn-white" href="ocorrencias.html" style="margin-top:10px"><i class="bx bx-buildings"></i> Problemas urbanos (buraco, luz…)</a>
+        </div>
+    </section>
+
+    <section class="kpis" aria-label="Indicadores">
+        <div class="kpi"><i class="bx bx-paper-plane"></i><div><strong id="totalOcorrencias">0</strong><span>Ocorrências</span></div></div>
+        <div class="kpi"><i class="bx bx-map"></i><div><strong id="totalRegioes">0</strong><span>Regiões afetadas</span></div></div>
+        <div class="kpi"><i class="bx bx-image"></i><div><strong id="totalRelatos">0</strong><span>Relatos recentes (30 dias)</span></div></div>
+    </section>
+
+    <section class="sec" id="relatos">
+        <div class="sec-head">
+            <h2>Relatos da comunidade</h2>
+            <div class="seg" id="seg">
+                <button type="button" class="on" data-v="todos">Todos</button>
+                <button type="button" data-v="meus">Meus relatos</button>
+            </div>
+        </div>
+        <div class="list" id="lista"></div>
+    </section>
+
+    <section class="sec" id="sobre">
+        <h2 style="margin-bottom:14px">Quem somos</h2>
+        <p class="lead">O Living City é uma plataforma colaborativa para mapear pontos de atenção ambiental no estado de São Paulo. Cada relato torna um problema visível e ajuda a buscar soluções.</p>
+        <div class="about">
+            <article><i class="bx bx-paper-plane"></i><h3>Registre</h3><p>Informe o tipo de problema e a cidade onde ele acontece.</p></article>
+            <article><i class="bx bx-map"></i><h3>Acompanhe</h3><p>Veja no mapa onde os relatos estão concentrados.</p></article>
+            <article><i class="bx bx-group"></i><h3>Participe</h3><p>Chame sua comunidade e ajude a cuidar da sua cidade.</p></article>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <img src="assets/logo.png" alt="Living City">
+    © 2026 Living City
+</footer>
+
+<dialog id="dlg">
+    <h2>Nova ocorrência</h2>
+    <form id="formOc" novalidate>
+        <div class="field"><label for="oTipo">Tipo de problema</label>
+            <div class="ctl"><select id="oTipo" required></select></div><small class="msg"></small></div>
+        <div class="field"><label for="oCidade">Cidade</label>
+            <div class="ctl"><select id="oCidade" required></select></div><small class="msg"></small></div>
+        <div class="field"><label for="oData">Data</label>
+            <div class="ctl"><input id="oData" type="date" required></div><small class="msg"></small></div>
+        <div class="field"><label for="oDesc">Descrição</label>
+            <div class="ctl"><textarea id="oDesc" required minlength="10" placeholder="Conte o que você viu (mín. 10 caracteres)"></textarea></div><small class="msg"></small></div>
+        <div class="row">
+            <button type="button" class="btn btn-ghost" id="cancelar">Cancelar</button>
+            <button type="submit" class="btn btn-blue">Enviar relato</button>
+        </div>
+    </form>
+</dialog>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="js/app.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/mapa.js"></script>
+</body>
+</html>

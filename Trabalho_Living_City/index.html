@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Living City · Entrar</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth">
+<div class="auth-wrap">
+    <a href="mapa.html"><img class="auth-logo" src="assets/logo.png" alt="Living City"></a>
+    <main class="auth-card">
+        <h1>Bem-vindo de volta</h1>
+        <p class="sub">Entre para registrar e acompanhar ocorrências.</p>
+        <p class="note" id="nextNote" hidden><i class="bx bx-info-circle"></i> Faça login para registrar uma ocorrência.</p>
+        <form data-action="login">
+        <div class="field">
+            <label for="email">E-mail</label>
+            <div class="ctl"><i class="bx bx-user"></i><input id="email" name="email" type="email" required placeholder="voce@email.com" autocomplete="email"></div>
+            <small class="msg"></small>
+        </div>
+        <div class="field">
+            <label for="senha">Senha</label>
+            <div class="ctl"><i class="bx bx-lock-alt"></i><input id="senha" name="senha" type="password" class="pw" required placeholder="Sua senha" autocomplete="current-password" data-req="Digite sua senha"><button type="button" class="eye" aria-label="Mostrar ou ocultar senha"><i class="bx bx-show"></i></button></div>
+            <small class="msg"></small>
+        </div>
+            <div class="opts">
+                <label class="check"><input type="checkbox" id="lembrar"> Lembrar de mim</label>
+                <a href="esqueceu-senha.html">Esqueceu a senha?</a>
+            </div>
+            <button class="btn btn-blue full" type="submit">Entrar</button>
+        </form>
+        <p class="alt">Não tem conta? <a href="cadastro.html">Cadastre-se</a></p>
+        <p class="alt"><a href="mapa.html"><i class="bx bx-map"></i> Ver o mapa sem entrar</a></p>
+    </main>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>

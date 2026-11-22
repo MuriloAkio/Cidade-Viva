@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Living City · Cadastro</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth">
+<div class="auth-wrap">
+    <a href="mapa.html"><img class="auth-logo" src="assets/logo.png" alt="Living City"></a>
+    <main class="auth-card">
+        <a class="back" href="index.html"><i class="bx bx-arrow-back"></i> Voltar</a>
+        <h1>Crie sua conta</h1>
+        <p class="sub">Participe e ajude a mapear sua cidade.</p>
+        <form data-action="cadastro">
+        <div class="field">
+            <label for="nome">Nome</label>
+            <div class="ctl"><i class="bx bx-user"></i><input id="nome" name="nome" type="text" required placeholder="Seu nome" autocomplete="name"></div>
+            <small class="msg"></small>
+        </div>
+        <div class="field">
+            <label for="email">E-mail</label>
+            <div class="ctl"><i class="bx bx-envelope"></i><input id="email" name="email" type="email" required placeholder="voce@email.com" autocomplete="email"></div>
+            <small class="msg"></small>
+        </div>
+        <div class="field">
+            <label for="email2">Confirme o e-mail</label>
+            <div class="ctl"><i class="bx bx-envelope"></i><input id="email2" name="email2" type="email" required placeholder="Repita o e-mail" data-match="#email" data-match-msg="Os e-mails não coincidem"></div>
+            <small class="msg"></small>
+        </div>
+        <div class="field">
+            <label for="nascimento">Data de nascimento</label>
+            <div class="ctl"><i class="bx bx-calendar"></i><input id="nascimento" name="nascimento" type="date" required ></div>
+            <small class="msg"></small>
+        </div>
+        <div class="field">
+            <label for="senha">Senha</label>
+            <div class="ctl"><i class="bx bx-lock-alt"></i><input id="senha" name="senha" type="password" class="pw" required placeholder="Mínimo de 6 caracteres" minlength="6" autocomplete="new-password"><button type="button" class="eye" aria-label="Mostrar ou ocultar senha"><i class="bx bx-show"></i></button></div>
+            <small class="msg"></small>
+        </div>
+        <div class="field">
+            <label for="senha2">Confirme a senha</label>
+            <div class="ctl"><i class="bx bx-lock-alt"></i><input id="senha2" name="senha2" type="password" class="pw" required placeholder="Repita a senha" data-match="#senha" data-match-msg="As senhas não coincidem" autocomplete="new-password"><button type="button" class="eye" aria-label="Mostrar ou ocultar senha"><i class="bx bx-show"></i></button></div>
+            <small class="msg"></small>
+        </div>
+            <button class="btn btn-blue full" type="submit">Próximo</button>
+        </form>
+        <p class="alt">Já tem conta? <a href="index.html">Entrar</a></p>
+    </main>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>

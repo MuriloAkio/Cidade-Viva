@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Living City · Ocorrências urbanas</title>
+    <meta name="description" content="Registre e acompanhe problemas urbanos da sua comunidade: iluminação, buracos, vazamentos e mais.">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+    <a class="brand" href="mapa.html"><img src="assets/logo.png" alt="Living City"></a>
+
+    <nav class="nav" id="nav" style="--i:3" aria-label="Principal">
+        <span class="nav-glow"></span>
+        <a href="mapa.html" data-tip="Mapa" aria-label="Mapa"><i class="bx bx-map off"></i><i class="bx bxs-map on"></i></a>
+        <a href="#nova" data-tip="Nova ocorrência" aria-label="Nova ocorrência"><i class="bx bx-paper-plane off"></i><i class="bx bxs-paper-plane on"></i></a>
+        <a href="#lista" data-act="meus" data-tip="Suas ocorrências" aria-label="Suas ocorrências"><i class="bx bx-note off"></i><i class="bx bxs-note on"></i></a>
+        <a href="ocorrencias.html" class="active" data-tip="Ocorrências urbanas" aria-label="Ocorrências urbanas"><i class="bx bx-buildings off"></i><i class="bx bxs-buildings on"></i></a>
+        <a href="mapa.html#sobre" data-tip="Quem somos" aria-label="Quem somos"><i class="bx bx-group off"></i><i class="bx bxs-group on"></i></a>
+    </nav>
+
+    <a class="btn btn-white" id="btnLogin" href="index.html?next=ocorrencias.html"><i class="bx bx-log-in"></i> Log In</a>
+</header>
+
+<main>
+    <section class="page-head">
+        <span class="eyebrow"><i class="bx bx-buildings"></i> Portal da comunidade · Problemas urbanos</span>
+        <h1>Ocorrências urbanas</h1>
+        <p>Buraco na rua, poste apagado, vazamento… Registre o problema, acompanhe e confirme os relatos de outras pessoas. Uma cidade melhor começa com a participação de todos.</p>
+    </section>
+
+    <section class="kpis" aria-label="Indicadores">
+        <div class="kpi"><i class="bx bx-clipboard"></i><div><strong id="kTotal">0</strong><span>Ocorrências registradas</span></div></div>
+        <div class="kpi"><i class="bx bx-group"></i><div><strong id="kConf">0</strong><span>Confirmações da comunidade</span></div></div>
+        <div class="kpi"><i class="bx bx-time-five"></i><div><strong id="kAberto">0</strong><span>Aguardando resolução</span></div></div>
+    </section>
+
+    <div class="oc-grid">
+        <aside class="form-card" id="nova">
+            <h2>Nova ocorrência</h2>
+            <p class="sub">Um pequeno registro pode fazer a diferença.</p>
+            <p class="note" id="loginNote" hidden><i class="bx bx-info-circle"></i> Faça login para enviar. <a href="index.html?next=ocorrencias.html" style="font-weight:600;margin-left:2px">Entrar</a></p>
+
+            <form id="formOc" novalidate>
+                <div class="field">
+                    <label for="oCat">Categoria</label>
+                    <div class="ctl"><i class="bx bx-category"></i><select id="oCat" required data-req="Selecione uma categoria"></select></div>
+                    <small class="msg"></small>
+                </div>
+                <div class="field">
+                    <label for="oLocal">Localização / endereço</label>
+                    <div class="ctl"><i class="bx bx-map-pin"></i><input id="oLocal" type="text" required placeholder="Ex.: Rua das Flores, nº 123" data-req="Informe a localização"></div>
+                    <small class="msg"></small>
+                </div>
+                <div class="field">
+                    <label for="oDesc">Descrição do problema</label>
+                    <div class="ctl"><textarea id="oDesc" required minlength="10" placeholder="O que está acontecendo? (mín. 10 caracteres)"></textarea></div>
+                    <small class="msg"></small>
+                </div>
+                <div class="field">
+                    <label>Foto do local <span class="opt">(opcional)</span></label>
+                    <label class="upload" for="oFoto" id="upload">
+                        <i class="bx bx-cloud-upload"></i>
+                        <span><b>Clique para adicionar</b> uma foto</span>
+                        <small>JPG, PNG ou WEBP · até 5 MB</small>
+                    </label>
+                    <input class="sr-only" id="oFoto" type="file" accept="image/jpeg,image/png,image/webp">
+                    <small class="msg"></small>
+                </div>
+                <button class="btn btn-blue full" type="submit" id="enviar"><i class="bx bx-paper-plane"></i> Enviar ocorrência</button>
+                <p class="privacy"><i class="bx bx-shield-quarter"></i> Seus dados pessoais não serão exibidos.</p>
+            </form>
+        </aside>
+
+        <section class="oc-list" id="lista" aria-labelledby="listaTitulo">
+            <div class="sec-head">
+                <h2 id="listaTitulo">Ocorrências registradas</h2>
+                <div class="seg" id="seg">
+                    <button type="button" class="on" data-v="todos">Todas</button>
+                    <button type="button" data-v="meus">Minhas</button>
+                </div>
+            </div>
+            <div class="chips" id="chips" role="group" aria-label="Filtrar por categoria"></div>
+            <div class="ocs" id="ocs"></div>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <img src="assets/logo.png" alt="Living City">
+    © 2026 Living City
+</footer>
+
+<dialog id="dlgDet" aria-label="Detalhes da ocorrência"></dialog>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="js/app.js"></script>
+<script src="js/config.js"></script>
+<script src="js/dados-exemplo.js"></script>
+<script src="js/ocorrencias.js"></script>
+</body>
+</html>
